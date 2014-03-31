@@ -37,51 +37,41 @@ public class Exercici47
             System.out.println("[4] Canviar la posició de l'element actual al principi de tot");
             System.out.println("[5] Canviar la posició de l'element actual al final de tot");
             System.out.println("[6] Eliminar l'objecte contingut en la posició actual");
-            System.out.println("[7] Sortir del programa");
+            System.out.println("[7] Mostrar la llista i posició en ella actual");
+            System.out.println("[0] Sortir del programa");
             
             op = introDades.nextByte();
-        }
-        while(op != 7); // (op < 0 || op > 7) NO mostraria el menú al escollir una opció vàlida
-        
-        switch(op)
-        {
-            case 1:
-                mostrarLlista(llista);
-                afegirEstudiant(introDades, llista);
-                break;
-            case 2:
-                mostrarLlista(llista);
-                canviarEsq(index, llista);
-                break;
-            case 3:
-                mostrarLlista(llista);
-                canviarDreta(index, llista);
-                break;
-            case 4:
-                mostrarLlista(llista);
-                canviarInici(index, llista);
-                break;
-            case 5:
-                mostrarLlista(llista);
-                canviarFinal(index, llista);
-                break;
-            case 6:
-                mostrarLlista(llista);
-                index.remove();
-                break;
-        }
+            switch(op)
+            {
+                case 1:
+                    afegirEstudiant(introDades, llista);
+                    break;
+                case 2:
+                    canviarEsq(index);
+                    break;
+                case 3:
+                    canviarDreta(index);
+                    break;
+                case 4:
+                    canviarInici(index);
+                    break;
+                case 5:
+                    canviarFinal(index);
+                    break;
+                case 6:
+                    index.remove();
+                    break;
+                case 7:
+                    mostrarLlista(llista, index);
+                    break;
+            }
+        }while(op != 0); // (op < 0 || op > 7) NO mostraria el menú al escollir una opció vàlida
     }
     
-    private static void mostrarLlista(ArrayList llista)
+    private static void mostrarLlista(ArrayList llista, ListIterator index)
     {
         System.out.println("Llista actual: " + llista);
-        System.out.println("Posició actual: " + llista.listIterator());
-    }
-    
-    private static void mostrarLlistaAct(ArrayList llista)
-    {
-        System.out.println("Llista actualitzada: " + llista);
-        System.out.println("Posició actualitzada: " + llista.listIterator());
+        System.out.println("Posició actual: " + (index.previousIndex()+1));
     }
     
     private static void afegirEstudiant(Scanner introDades, ArrayList<Estudiant> llista)
@@ -90,50 +80,46 @@ public class Exercici47
         byte edat;
                 
         System.out.println("Introdueix el nom de l'estudiant a afegir: ");
-        nom = introDades.nextLine();
+        nom = introDades.next();
         System.out.println("Introdueix l'edat de l'estudiant a afegir: ");
         edat = introDades.nextByte();
         Estudiant estudiant = new Estudiant(nom, edat);
         llista.add(estudiant);
     }
     
-    private static void canviarEsq(ListIterator index, ArrayList llista)
+    private static void canviarEsq(ListIterator index)
     {
         if(index.hasPrevious())
         {
             index.previous();
-            mostrarLlistaAct(llista);
         }else{
             System.out.println("No hi ha cap element previ a l'actual");
         }
     }
     
-    private static void canviarDreta(ListIterator index, ArrayList llista)
+    private static void canviarDreta(ListIterator index)
     {
         if(index.hasNext())
         {
             index.next();
-            mostrarLlistaAct(llista);
         }else{
             System.out.println("No hi ha cap element posterior a l'actual");
         }
     }
     
-    private static void canviarInici(ListIterator index, ArrayList llista)
+    private static void canviarInici(ListIterator index)
     {
         while(index.hasPrevious())
         {
             index.previous();
         }
-        mostrarLlistaAct(llista);
     }
     
-    private static void canviarFinal(ListIterator index, ArrayList llista)
+    private static void canviarFinal(ListIterator index)
     {
         while(index.hasNext())
         {
             index.next();
         }
-        mostrarLlistaAct(llista);
     }
 }
