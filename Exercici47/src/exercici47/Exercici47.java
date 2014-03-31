@@ -19,15 +19,16 @@ public class Exercici47
      */
     public static void main(String[] args)
     {
-        iniciarMenu();
-        
-    }
-    private static void iniciarMenu()
-    {
-        byte op;
         ArrayList<Estudiant> llista = new ArrayList();
+        ListIterator index = llista.listIterator();
         Scanner introDades = new Scanner(System.in);
         
+        iniciarMenu(llista, index, introDades);        
+    }
+    private static void iniciarMenu(ArrayList llista, ListIterator index, Scanner introDades)
+    {
+        byte op;
+                
         do
         {
             System.out.println("[1] Afegir un objecte a la llista a partir de l'element actual");
@@ -46,42 +47,41 @@ public class Exercici47
         {
             case 1:
                 mostrarLlista(llista);
-                //byte obj = introDades.nextByte();
-                
+                afegirEstudiant(introDades, llista);
                 break;
             case 2:
                 mostrarLlista(llista);
-                ;
+                canviarEsq(index, llista);
                 break;
             case 3:
                 mostrarLlista(llista);
-                ;
+                canviarDreta(index, llista);
                 break;
             case 4:
                 mostrarLlista(llista);
-                ;
+                canviarInici(index, llista);
                 break;
             case 5:
                 mostrarLlista(llista);
-                ;
+                canviarFinal(index, llista);
                 break;
             case 6:
                 mostrarLlista(llista);
-                ;
+                index.remove();
                 break;
-            case 7:
-                ;
-                break;
-            default:
-                ;
         }
     }
     
     private static void mostrarLlista(ArrayList llista)
     {
         System.out.println("Llista actual: " + llista);
-        System.out.println("Posició actual: ");
-        System.out.println("Introdueix l'objecte a afegir: ");
+        System.out.println("Posició actual: " + llista.listIterator());
+    }
+    
+    private static void mostrarLlistaAct(ArrayList llista)
+    {
+        System.out.println("Llista actualitzada: " + llista);
+        System.out.println("Posició actualitzada: " + llista.listIterator());
     }
     
     private static void afegirEstudiant(Scanner introDades, ArrayList<Estudiant> llista)
@@ -93,9 +93,47 @@ public class Exercici47
         nom = introDades.nextLine();
         System.out.println("Introdueix l'edat de l'estudiant a afegir: ");
         edat = introDades.nextByte();
-        Estudiant estudiant = new Estudiant(nom, edat);        
-        
-        
-        
+        Estudiant estudiant = new Estudiant(nom, edat);
+        llista.add(estudiant);
+    }
+    
+    private static void canviarEsq(ListIterator index, ArrayList llista)
+    {
+        if(index.hasPrevious())
+        {
+            index.previous();
+            mostrarLlistaAct(llista);
+        }else{
+            System.out.println("No hi ha cap element previ a l'actual");
+        }
+    }
+    
+    private static void canviarDreta(ListIterator index, ArrayList llista)
+    {
+        if(index.hasNext())
+        {
+            index.next();
+            mostrarLlistaAct(llista);
+        }else{
+            System.out.println("No hi ha cap element posterior a l'actual");
+        }
+    }
+    
+    private static void canviarInici(ListIterator index, ArrayList llista)
+    {
+        while(index.hasPrevious())
+        {
+            index.previous();
+        }
+        mostrarLlistaAct(llista);
+    }
+    
+    private static void canviarFinal(ListIterator index, ArrayList llista)
+    {
+        while(index.hasNext())
+        {
+            index.next();
+        }
+        mostrarLlistaAct(llista);
     }
 }

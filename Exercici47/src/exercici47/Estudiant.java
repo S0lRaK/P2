@@ -44,6 +44,7 @@ public class Estudiant
     }
     
     // Altres mètodes
+    @Override
     public String toString()
     {
         return "[Estudiant] " + "Nom: " + nom + " | Edat: " + edat;
