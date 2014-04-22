@@ -213,3 +213,26 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+
+#################
+## NetBeans
+#################
+
+#java specific
+*.class
+
+#netbeans ignore personal stuff nbproject/
+
+## generic files to ignore
+
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+# Package File #
+*.jar
+*.war
+*.ear
