@@ -235,3 +235,4 @@ pip-log.txt
 *.jar
 *.war
 *.ear
+/UF4/Exercici10_2/nbproject/private/
