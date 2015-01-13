@@ -17,7 +17,7 @@ public class Main {
         int resultat;
         if(num > 46340)
         {
-            throw new ArithmeticException();
+//            throw new ArithmeticException();
         }
         resultat = num * num;
         return resultat;
@@ -27,7 +27,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        int q=46340; // <<<<<<<<-----valor a modificar per fer saltar l'excepció
+        int q=46341; // <<<<<<<<-----valor a modificar per fer saltar l'excepció
         
         int resultat=0;
 

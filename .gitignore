@@ -235,4 +235,11 @@ pip-log.txt
 *.jar
 *.war
 *.ear
-/UF4/Exercici10_2/nbproject/private/
+
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
