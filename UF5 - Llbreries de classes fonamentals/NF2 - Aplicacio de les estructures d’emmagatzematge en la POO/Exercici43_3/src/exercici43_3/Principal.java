@@ -33,23 +33,23 @@ public class Principal
         String frase = introDades.nextLine();
         
         StringTokenizer fraseTokenitzada = new StringTokenizer(frase, " ");
-        String fraseCanviada = canviarPuntParaulaFinal(frase);
+        String ultimaParaula = canviarPuntParaulaFinal(frase);
         
         System.out.println("");
         System.out.println("Número de paraules:\t" + fraseTokenitzada.countTokens());
         System.out.println("Número de caràcters:\t" + frase.length());
         System.out.println("Primera paraula:\t" + fraseTokenitzada.nextToken());
-        System.out.println("Última paraula:\t\t" + fraseCanviada);
+        System.out.println("Última paraula:\t\t" + ultimaParaula);
         System.out.println("Frase en majúscula:\t" + frase.toUpperCase());
         System.out.println("Frase en minúscula:\t" + frase.toLowerCase());
     }
     
     private static String canviarPuntParaulaFinal(String frase)
     {
-        String fraseCanviada = frase.replace('.','\0');
+        String ultimaParaula = frase.substring(frase.lastIndexOf(' '));
         
-        fraseCanviada = fraseCanviada.substring(fraseCanviada.lastIndexOf(" "));
+        ultimaParaula = ultimaParaula.replaceAll("\\s|\\.", ""); // whitespaces AND dots
         
-        return fraseCanviada;
+        return ultimaParaula;
     }
 }
