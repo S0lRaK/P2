@@ -42,7 +42,6 @@ public class Main
     private static ArrayList separateWords(String phrase)
     {
         String[] words = phrase.split("\\s+");  // tota classe d'espais (i seguits)
-        
         ArrayList<String> phraseWords = new ArrayList();
         phraseWords.addAll(Arrays.asList(words));
         return phraseWords;
@@ -52,12 +51,18 @@ public class Main
     {        
         for(Object word : phraseWords)
         {
+            word = replaceFinalDot(word.toString());
             System.out.println(word);
         }
     }
     
-//    private static String replaceFinalDot(String word)
-//    {
-//        
-//    }
+    private static String replaceFinalDot(String word)
+    {
+        if(word.contains("."))
+        {
+            word = word.replace(".", "");
+        }
+        
+        return word;
+    }
 }
